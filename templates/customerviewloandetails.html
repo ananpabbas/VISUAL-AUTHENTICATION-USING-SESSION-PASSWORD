@@ -1,0 +1,94 @@
+{% include 'customerheader.html' %}
+<center>
+		<div class="fullwidthbanner" id="home">
+            <div class="tp-banner">
+                <ul>
+                    <!-- SLIDE 1 -->
+                    <li data-transition="fade" data-slotamount="7" data-masterspeed="1500">
+                        <!-- MAIN IMAGE -->
+                        <img src="/static/images/bg-1.jpg" alt="desk" data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+                        <!-- LAYERS -->
+                        <!-- LAYER NR. 1 -->
+                        <div class="tp-caption slider-title" data-x="center" data-y="center"  data-voffset="-30" data-speed="500" data-start="1200" data-easing="Power4.easeInOut">
+<h1 style="padding-top: 100px">View Loan Details</h1>
+<!-- Loan Search Filters -->
+<input type="text" id="loanNameSearch" class="form-control" placeholder="Search by Loan Name"
+  style="width: 200px; display: inline-block; margin: 5px; font-size: 13px;">
+
+<input type="text" id="interestRateSearch" class="form-control" placeholder="Search by Interest Rate"
+  style="width: 200px; display: inline-block; margin: 5px; font-size: 13px;">
+
+<input type="text" id="maxAmountSearch" class="form-control" placeholder="Search by Max Amount"
+  style="width: 200px; display: inline-block; margin: 5px; font-size: 13px;">
+
+<table class="table" style="width: 500px;font-size:15px">
+<form method="post">
+	<tr>
+		<th>Bank Name</th>
+		<th>Place</th>
+		<th>Phone</th>
+		<th>Email</th>
+		<th>Loan Name</th>
+		<th>Details</th>
+		<th>Interest Rate</th>
+		<th>Max Amount</th>
+	</tr>
+	{% for row in data['loans'] %}
+	<tr>
+		<td>{{row['bankname']}}</td>
+		<td>{{row['place']}}</td>
+		<td>{{row['phone']}}</td>
+		<td>{{row['email']}}</td>
+		<td>{{row['loan_name']}}</td>
+		<td>{{row['details']}}</td>
+		<td>{{row['interest_rate']}}</td>
+		<td>{{row['max_amount']}}</td>
+		<td><a href="?action=request&lnid={{row['loan_id']}}">request for loan</a></td>
+	</tr>
+	{% endfor %}
+</table>
+</form>
+</center>
+                        </div> <!-- /tp-caption -->
+                        <!-- LAYER NR. 2 -->
+                       
+                    </li>
+                    <!-- SLIDE 2 -->
+                    
+                </ul>
+            </div>
+        </div><!--full width banner-->
+{% include 'footer.html' %}
+
+<script>
+  const loanNameInput = document.getElementById("loanNameSearch");
+  const interestRateInput = document.getElementById("interestRateSearch");
+  const maxAmountInput = document.getElementById("maxAmountSearch");
+  const rows = document.querySelectorAll("table.table tr");
+
+  function filterLoans() {
+    const loanNameVal = loanNameInput.value.toLowerCase();
+    const interestRateVal = interestRateInput.value.toLowerCase();
+    const maxAmountVal = maxAmountInput.value.toLowerCase();
+
+    for (let i = 1; i < rows.length; i++) { // skip header row
+      const row = rows[i];
+      const cells = row.getElementsByTagName("td");
+
+      const loanName = cells[4]?.innerText.toLowerCase();
+      const interestRate = cells[6]?.innerText.toLowerCase();
+      const maxAmount = cells[7]?.innerText.toLowerCase();
+
+      const matchLoanName = loanName.includes(loanNameVal);
+      const matchInterestRate = interestRate.includes(interestRateVal);
+      const matchMaxAmount = maxAmount.includes(maxAmountVal);
+
+      const visible = matchLoanName && matchInterestRate && matchMaxAmount;
+      row.style.display = visible ? "" : "none";
+    }
+  }
+
+  loanNameInput.addEventListener("input", filterLoans);
+  interestRateInput.addEventListener("input", filterLoans);
+  maxAmountInput.addEventListener("input", filterLoans);
+</script>

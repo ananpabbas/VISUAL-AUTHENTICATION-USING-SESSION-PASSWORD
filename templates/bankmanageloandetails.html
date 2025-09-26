@@ -1,0 +1,147 @@
+{% include 'bankheader.html' %}
+<center>
+		<div class="fullwidthbanner" id="home">
+            <div class="tp-banner">
+                <ul>
+                    <!-- SLIDE 1 -->
+                    <li data-transition="fade" data-slotamount="7" data-masterspeed="1500">
+                        <!-- MAIN IMAGE -->
+                        <img src="/static/images/bg-1.jpg" alt="desk" data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+                        <!-- LAYERS -->
+                        <!-- LAYER NR. 1 -->
+                        <div class="tp-caption slider-title" data-x="center" data-y="center"  data-voffset="-30" data-speed="500" data-start="1200" data-easing="Power4.easeInOut">
+<form method="post">
+	{% if data['loan'] %}
+	<h1 style="padding-top: 150px">Update Loans</h1>
+	<table class="table" style="width: 600px;font-size:30px">
+		<tr>
+			<th>Loan Name</th>
+			<td><input type="text" name="loanname" value="{{data['loan'][0]['loan_name']}}" class="form-control" required></td>
+		</tr>
+		<tr>
+			<th>Details</th>
+			<td><input type="text" name="details" value="{{data['loan'][0]['details']}}" class="form-control" required></td>
+		</tr>
+		<tr>
+			<th>Interest Rate</th>
+			<td><input type="text" name="interestrate" value="{{data['loan'][0]['interest_rate']}}" class="form-control" required></td>
+		</tr>
+		<tr>
+			<th>Max Amount</th>
+			<td><input type="text" name="maxamount" value="{{data['loan'][0]['max_amount']}}" class="form-control" required></td>
+		</tr>
+		<tr>
+			<td align="center" colspan="2"><input type="submit" name="update" value="UPDATE" class="btn btn-primary"></td>
+		</tr>
+	</table>
+	{% else %}
+
+<h1 style="padding-top: 150px">Manage Loans</h1>
+	<table class="table" style="width: 500px;font-size:15px">
+
+		<tr>
+			<th>Loan Name</th>
+			<td><input type="text" name="loanname" class="form-control" required></td>
+		</tr>
+		<tr>
+			<th>Details</th>
+			<td><input type="text" name="details" class="form-control" required></td>
+		</tr>
+		<tr>
+			<th>Interest Rate</th>
+			<td>
+  <input
+    type="number"
+    name="interestrate"
+    class="form-control"
+    min="0"
+    step="0.01"
+    placeholder="Enter interest rate"
+    required>
+</td>
+	</tr>
+		<tr>
+			<th>Max Amount</th>
+			<td>
+  <input
+    type="number"
+    name="maxamount"
+    class="form-control"
+    min="0"
+    step="1"
+    placeholder="Enter amount"
+    required>
+</td>
+	</tr>
+		<tr>
+			<td align="center" colspan="2"><input type="submit" name="manage" value="MANAGE" class="btn btn-primary"></td>
+		</tr>
+	</table>
+	{% endif %}
+</form>
+</center>
+                        </div> <!-- /tp-caption -->
+                        <!-- LAYER NR. 2 -->
+                       
+                    </li>
+                    <!-- SLIDE 2 -->
+                    
+                </ul>
+            </div>
+        </div><!--full width banner-->
+        
+ <section id="about" class="section-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2 text-center">
+                        <div class="section-title">
+                            <h1> <span class="alo">View Loans</span></h1> 
+                            <span class="border-line"></span>
+                           <center>
+<!-- <h1>View Bank Details</h1> -->
+ <input
+  type="text"
+  id="searchInput"
+  class="form-control"
+  placeholder="Search loans..."
+  style="width: 500px; margin-bottom: 10px; font-size: 16px;">
+
+<table class="table" style="width: 500px;font-size:15px">
+	<tr>
+		<th>Loan name</th>
+		<th>Details</th>
+		<th>Interest Rate</th>
+		<th>Max Amount</th>
+	</tr>
+	{% for row in data['loans'] %}
+	<tr>
+		<td>{{row['loan_name']}}</td>
+		<td>{{row['details']}}</td>
+		<td>{{row['interest_rate']}}</td>
+		<td>{{row['max_amount']}}</td>
+		<td><a href="?action=delete&id={{row['loan_id']}}" class="btn btn-info">DELETE</a></td>
+		<td><a href="?action=update&id={{row['loan_id']}}" class="btn btn-info">UPDATE</a></td>
+	</tr>
+	{% endfor %}
+</table>
+</center>
+
+                        </div>
+                    </div>
+                </div>
+            </div><!--container-->      
+        </section><!--about section end-->
+
+{% include 'footer.html' %}
+
+<script>
+  document.getElementById('searchInput').addEventListener('keyup', function () {
+    const input = this.value.toLowerCase();
+    const rows = document.querySelectorAll('table.table tr');
+
+    for (let i = 1; i < rows.length; i++) { // skip header row
+      const rowText = rows[i].innerText.toLowerCase();
+      rows[i].style.display = rowText.includes(input) ? '' : 'none';
+    }
+  });
+</script>

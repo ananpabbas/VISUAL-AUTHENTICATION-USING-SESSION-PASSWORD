@@ -1,0 +1,70 @@
+{% include 'adminheader.html' %}
+<center>
+		<div class="fullwidthbanner" id="home">
+            <div class="tp-banner">
+                <ul>
+                    <!-- SLIDE 1 -->
+                    <li data-transition="fade" data-slotamount="7" data-masterspeed="1500">
+                        <!-- MAIN IMAGE -->
+                        <img src="/static/images/bg-1.jpg" alt="desk" data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+                        <!-- LAYERS -->
+                        <!-- LAYER NR. 1 -->
+                        <div class="tp-caption slider-title" data-x="center" data-y="center"  data-voffset="-30" data-speed="500" data-start="1200" data-easing="Power4.easeInOut">
+<h1 style="padding-top: 100px">View Loan Details</h1>
+
+<input
+  type="text"
+  id="searchInput"
+  class="form-control"
+  placeholder="Search loans..."
+  style="width: 500px; margin-bottom: 10px; font-size: 18px;">
+
+
+<table class="table" style="width: 500px;font-size:20px">
+	<tr>
+		<th>Bank Name</th>
+		<th>Place</th>
+		<th>Phone</th>
+		<th>Email</th>
+		<th>Loan Name</th>
+		<th>Details</th>
+		<th>Interest Rate</th>
+		<th>Max Amount</th>
+	</tr>
+	{% for row in data['loans'] %}
+	<tr>
+		<td>{{row['bankname']}}</td>
+		<td>{{row['place']}}</td>
+		<td>{{row['phone']}}</td>
+		<td>{{row['email']}}</td>
+		<td>{{row['loan_name']}}</td>
+		<td>{{row['details']}}</td>
+		<td>{{row['interest_rate']}}</td>
+		<td>{{row['max_amount']}}</td>
+	</tr>
+	{% endfor %}
+</table>
+</center>
+                        </div> <!-- /tp-caption -->
+                        <!-- LAYER NR. 2 -->
+                       
+                    </li>
+                    <!-- SLIDE 2 -->
+                    
+                </ul>
+            </div>
+        </div><!--full width banner-->
+
+{% include 'footer.html' %}
+
+<script>
+  document.getElementById('searchInput').addEventListener('keyup', function () {
+    const input = this.value.toLowerCase();
+    const rows = document.querySelectorAll('table.table tr');
+
+    for (let i = 1; i < rows.length; i++) {  // skip header row
+      const rowText = rows[i].innerText.toLowerCase();
+      rows[i].style.display = rowText.includes(input) ? '' : 'none';
+    }
+  });
+</script>

@@ -1,0 +1,51 @@
+{% include 'employeeheader.html' %}
+<center>
+		<div class="fullwidthbanner" id="home">
+            <div class="tp-banner">
+                <ul>
+                    <!-- SLIDE 1 -->
+                    <li data-transition="fade" data-slotamount="7" data-masterspeed="1500">
+                        <!-- MAIN IMAGE -->
+                        <img src="/static/images/bg-1.jpg" alt="desk" data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+                        <!-- LAYERS -->
+                        <!-- LAYER NR. 1 -->
+                        <div class="tp-caption slider-title" data-x="center" data-y="center"  data-voffset="-30" data-speed="500" data-start="1200" data-easing="Power4.easeInOut">
+<form>
+	<h1 style="padding-top: 150px">View Profile</h1>
+	<table class="table" style="width: 600px;font-size:20px">
+	<tr>
+		<th>BankName</th>
+		<th>Employee Name</th>
+		<th>House Name</th>
+		<th>Place</th>
+		<th>Gender</th>
+		<th>Phone</th>
+		<th>Email</th>
+		<th>Qualification</th>
+	</tr>
+	{% for row in data['empl'] %}
+	<tr>
+		<td>{{row['bankname']}}</td>
+		<td>{{row['firstname']+ " " +row['lastname']}}</td>
+		<td>{{row['housename']}}</td>
+		<td>{{row['place']}}</td>
+		<td>{{row['gender']}}</td>
+		<td>{{row['phone']}}</td>
+		<td>{{row['email']}}</td>
+		<td>{{row['qualification']}}</td>
+	</tr>
+	{% endfor %}
+</table>
+</form>
+</center>
+                        </div> <!-- /tp-caption -->
+                        <!-- LAYER NR. 2 -->
+                       
+                    </li>
+                    <!-- SLIDE 2 -->
+                    
+                </ul>
+            </div>
+        </div><!--full width banner-->
+
+{% include 'footer.html' %}

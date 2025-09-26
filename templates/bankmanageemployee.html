@@ -1,0 +1,227 @@
+{% include 'bankheader.html' %}
+<script>  
+
+function allLetter(inputtxt)
+      {
+      var letters = /^[A-Za-z]+$/;
+      if(inputtxt.value.match(letters))
+      {
+   
+      return true;
+      }
+      else
+      {
+      alert('Please input alphabet characters only');
+      return false;
+      }
+      }
+      </script>
+<script>
+function phonenumber(inputtxt)
+{
+  var phoneno = /^\d{10}$/;
+  if(inputtxt.value.match(phoneno))
+  {
+      return true;
+  }
+  else
+  {
+     alert("Not a valid Phone Number");
+     return false;
+  }
+}
+
+</script>
+<center>
+		<div class="fullwidthbanner" id="home">
+            <div class="tp-banner">
+                <ul>
+                    <!-- SLIDE 1 -->
+                    <li data-transition="fade" data-slotamount="7" data-masterspeed="1500">
+                        <!-- MAIN IMAGE -->
+                        <img src="/static/images/bg-1.jpg" alt="desk" data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+                        <!-- LAYERS -->
+                        <!-- LAYER NR. 1 -->
+                        <div class="tp-caption slider-title" data-x="center" data-y="center"  data-voffset="-30" data-speed="500" data-start="1200" data-easing="Power4.easeInOut">
+<form method="post">
+	{% if data['emp'] %}
+	<h1 style="padding-top: 150px">Update Employee</h1>
+	<table class="table" style="width: 600px;font-size:30px">
+		<tr>
+			<th>FirstName</th>
+			<td><input type="text" name="firstname" value="{{data['emp'][0]['firstname']}}" class="form-control" required></td>
+		</tr>
+		<tr>
+			<th>LastName</th>
+			<td><input type="text" name="lastname" value="{{data['emp'][0]['lastname']}}" class="form-control" required></td>
+		</tr>
+		<tr>
+			<th>HouseName</th>
+			<td><input type="text" name="housename" value="{{data['emp'][0]['housename']}}" class="form-control" required></td>
+		</tr>
+		<tr>
+			<th>Place</th>
+			<td><input type="text" name="place" value="{{data['emp'][0]['place']}}" class="form-control" required></td>
+		</tr>
+		<tr>
+			<th>Gender</th>
+			<td><input type="radio" name="gender" value="female" checked>female
+				<input type="radio" name="gender" value="male">male</td>
+		</tr>
+		<tr>
+			<th>Phone</th>
+			<td><input type="text" name="phone" value="{{data['emp'][0]['phone']}}" class="form-control" required></td>
+		</tr>
+		<tr>
+			<th>Email</th>
+			<td><input type="email" name="email" value="{{data['emp'][0]['email']}}" class="form-control" required></td>
+		</tr>
+		<tr>
+			<th>Qualification</th>
+			<td><input type="text" name="qualification" value="{{data['emp'][0]['qualification']}}" class="form-control" required></td>
+		</tr>
+		<tr>
+			<td align="center" colspan="2"><input type="submit" name="update" value="UPDATE" class="btn btn-primary"></td>
+		</tr>
+	</table>
+	{% else %}
+<h1 style="padding-top: 150px">Add Employee</h1>
+	<table class="table" style="width: 500px;font-size:15px">
+		<tr>
+			<th>FirstName</th>
+			<td><input type="text" name="firstname" onchange="allLetter(this)" class="form-control" required></td>
+		</tr>
+		<tr>
+			<th>LastName</th>
+			<td><input type="text" name="lastname" onchange="allLetter(this)" class="form-control" required></td>
+		</tr>
+		<tr>
+			<th>HouseName</th>
+			<td><input type="text" name="housename" onchange="allLetter(this)" class="form-control" required></td>
+		</tr>
+		<tr>
+			<th>Place</th>
+			<td><input type="text" name="place" onchange="allLetter(this)" class="form-control" required></td>
+		</tr>
+		<tr>
+			<th>Gender</th>
+			<td><input type="radio" name="gender" value="female" checked>female
+				<input type="radio" name="gender" value="male">male</td>
+		</tr>
+		<tr>
+			<th>Phone</th>
+			<td><input type="text" name="phone" onchange="phonenumber(this)" class="form-control" required></td>
+		</tr>
+		<tr>
+			<th>Email</th>
+		<td>
+  <input
+    type="email"
+    name="email"
+    class="form-control"
+    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+    title="Enter a valid email address like example@domain.com"
+    required>
+</td>
+</tr>
+		<tr>
+			<th>Qualification</th>
+			<td><input type="text" name="qualification" onchange="allLetter(this)" class="form-control" required></td>
+		</tr>
+		<tr>
+			<th>Username</th>
+			<td><input type="text" name="username" class="form-control" required></td>
+		</tr>
+		<tr>
+			<th>Password</th>
+			<td>
+  <input
+    type="password"
+    name="password"
+    class="form-control"
+    pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{7,}"
+    title="Password must be at least 7 characters and include uppercase, lowercase, and a number"
+    required>
+</td>
+	</tr>
+		<tr>
+			<td align="center" colspan="2"><input type="submit" name="add" value="ADD" class="btn btn-primary"></td>
+		</tr>
+	</table>
+	{% endif %}
+</form>
+</center>
+                        </div> <!-- /tp-caption -->
+                        <!-- LAYER NR. 2 -->
+                       
+                    </li>
+                    <!-- SLIDE 2 -->
+                    
+                </ul>
+            </div>
+        </div><!--full width banner-->
+ <section id="about" class="section-padding">
+            <div class="container">
+                <div class="row">
+                   <!--  <div class="col-sm-8 col-sm-offset-2 text-center"> -->
+                        <div class="section-title">
+                            <h1> <span class="alo">View & Manage Employees</span></h1> 
+                            <span class="border-line"></span>
+                           
+<!-- <h1>View Bank Details</h1> -->
+ <input
+  type="text"
+  id="searchInput"
+  class="form-control"
+  placeholder="Search employees..."
+  style="width: 500px; margin-bottom: 10px; font-size: 16px;">
+
+<table class="table" style="width: 500px;font-size:15px">
+	<tr>
+		<th>Firstname</th>
+		<th>LastName</th>
+		<th>HouseName</th>
+		<th>Place</th>
+		<th>Gender</th>
+		<th>Phone</th>
+		<th>Email</th>
+		<th>Qualification</th>
+	</tr>
+	{% for row in data['employee'] %}
+	<tr>
+		<td>{{row['firstname']}}</td>
+		<td>{{row['lastname']}}</td>
+		<td>{{row['housename']}}</td>
+		<td>{{row['place']}}</td>
+		<td>{{row['gender']}}</td>
+		<td>{{row['phone']}}</td>
+		<td>{{row['email']}}</td>
+		<td>{{row['qualification']}}</td>
+		<td><a href="?action=delete&id={{row['login_id']}}" class="btn btn-info">DELETE</a></td>
+		<td><a href="?action=update&id={{row['login_id']}}" class="btn btn-info">UPDATE</a></td>
+		<td><a href="bankviewchat?elid={{row['login_id']}}" class="btn btn-primary">chat</a></td>
+	</tr>
+	{% endfor %}
+</table>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div><!--container-->      
+        </section><!--about section end-->
+
+{% include 'footer.html' %}
+
+
+<script>
+  document.getElementById('searchInput').addEventListener('keyup', function () {
+    const input = this.value.toLowerCase();
+    const rows = document.querySelectorAll('table.table tr');
+
+    for (let i = 1; i < rows.length; i++) { // Skip the header row
+      const rowText = rows[i].innerText.toLowerCase();
+      rows[i].style.display = rowText.includes(input) ? '' : 'none';
+    }
+  });
+</script>

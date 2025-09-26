@@ -1,0 +1,52 @@
+{% include 'customerheader.html' %}
+<center>
+		<div class="fullwidthbanner" id="home">
+            <div class="tp-banner">
+                <ul>
+                    <!-- SLIDE 1 -->
+                    <li data-transition="fade" data-slotamount="7" data-masterspeed="1500">
+                        <!-- MAIN IMAGE -->
+                        <img src="/static/images/bg-1.jpg" alt="desk" data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+                        <!-- LAYERS -->
+                        <!-- LAYER NR. 1 -->
+                        <div class="tp-caption slider-title" data-x="center" data-y="center"  data-voffset="-30" data-speed="500" data-start="1200" data-easing="Power4.easeInOut">
+<h1 style="padding-top: 100px">View Accounts</h1>
+<table class="table" style="width: 500px;font-size:12px">
+	<tr>
+		<th>BankName</th>
+		<th>Place</th>
+		<th>Phone</th>
+		<th>Email</th>
+		<th>Account</th>
+		<th>Balance</th>
+		<th>Datetime</th>
+		<th>Color Security</th>
+		<th>Chat Box</th>
+	</tr>
+	{% for row in data['account'] %}
+	<tr>
+		<td>{{row['bankname']}}</td>
+		<td>{{row['place']}}</td>
+		<td>{{row['phone']}}</td>
+		<td>{{row['email']}}</td>
+		<td>{{row['account_number']}}</td>
+		<td>{{row['balance']}}</td>
+		<td>{{row['datetime']}}</td>
+		<!-- <td><a class="btn btn-info btn-sm" href="customer_add_security?aid={{row['account_id']}}">Security</a></td> -->
+		<td><a class="btn btn-success btn-sm" href="customer_add_security_image?aid={{row['account_id']}}">Security Image</a></td>
+		<td><a class="btn btn-primary btn-sm" href="customerviewemployee?bid={{row['bank_id']}}">Employee</a></td>
+	</tr>
+	{% endfor %}
+</table>
+</center>
+                        </div> <!-- /tp-caption -->
+                        <!-- LAYER NR. 2 -->
+                       
+                    </li>
+                    <!-- SLIDE 2 -->
+                    
+                </ul>
+            </div>
+        </div><!--full width banner-->
+
+{% include 'footer.html' %}

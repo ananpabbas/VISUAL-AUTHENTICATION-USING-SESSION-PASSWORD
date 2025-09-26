@@ -1,0 +1,66 @@
+
+    <!-- footer -->
+    <footer class="footer footer-2 pt-lg-130 pt-110 pb-100 pb-lg-125" style="background-image: url(/static/static1/images/footer-bg-2.png);">
+        <div class="copyright pt-45">
+            <div class="container">
+                <div class="row ">
+                    <div class="col-xl-8 offset-xl-4">
+                        <div class="row align-items-center gy-lg-0 gy-3 gx-0">
+                            <div class="col-md-2  text-md-start text-center">
+                                <a href="/"><img src="/static/static1/images/Logo.png" alt="logo"></a>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="line"></div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="social-button text-center">
+                                    <a class="ms-0" href="#"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                                    <a class="me-0" href="#"><i class="fab fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="copyright-text text-md-start text-center">
+                                <p>Copyright� Banca 2025.<br class="d-sm-none"> <a class="ms-3" href="#">Privecy</a> | <a class="ms-0" href="#">Term
+                                        of Use</a> </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer end -->
+
+    <!-- Back to top button -->
+    <a id="back-to-top" title="Back to Top"></a>
+
+    <!-- JS here -->
+    <script type="text/javascript" src="/static/static1/js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="/static/static1/js/preloader.js"></script>
+    <script type="text/javascript" src="/static/static1/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="/static/static1/js/jquery.smoothscroll.min.js"></script>
+    <script type="text/javascript" src="/static/static1/js/slick.min.js"></script>
+    <script type="text/javascript" src="/static/static1/js/jquery.fancybox.min.js"></script>
+    <script type="text/javascript" src="/static/static1/js/nouislider.min.js"></script>
+    <script type="text/javascript" src="/static/static1/js/wNumb.js"></script>
+    <script type="text/javascript" src="/static/static1/js/flatpickr.min.js"></script>
+    <script type="text/javascript" src="/static/static1/js/wow.min.js"></script>
+    <script src="/static/static1/js/ionicons.js"></script>
+    <script type="text/javascript" src="/static/static1/js/custom.js"></script>
+    <script type="text/javascript" src="/static/static1/js/parallax.js"></script>
+
+
+</body></html>
+
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+
+    {% for message in messages %}
+    <script>alert("{{ message }}")</script>
+    {% endfor %}
+
+    {% endif %}
+{% endwith %}

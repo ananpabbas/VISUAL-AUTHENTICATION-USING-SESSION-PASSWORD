@@ -1,0 +1,57 @@
+{% include 'adminheader.html' %}
+<center>
+		<div class="fullwidthbanner" id="home">
+            <div class="tp-banner">
+                <ul>
+                    <!-- SLIDE 1 -->
+                    <li data-transition="fade" data-slotamount="7" data-masterspeed="1500">
+                        <!-- MAIN IMAGE -->
+                        <img src="/static/images/bg-1.jpg" alt="desk" data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+                        <!-- LAYERS -->
+                        <!-- LAYER NR. 1 -->
+                        <div class="tp-caption slider-title" data-x="center" data-y="center"  data-voffset="-30" data-speed="500" data-start="1200" data-easing="Power4.easeInOut">
+<h1 style="padding-top: 100px">View Accounts</h1>
+<table class="table" style="width: 500px;font-size:12px">
+	<tr>
+		<th>Customer Name</th>
+		<th>HouseName</th>
+		<th>Customer Place</th>
+		<th>Pincode</th>
+		<th>Phone</th>
+		<th>Email</th>
+		<th>BankName</th>
+		<th>BankPlace</th>
+		<th>AccountNumber</th>
+		<th>Balance</th>
+		<th>Datetime</th>
+		<th>Status</th>
+	</tr>
+	{% for row in data['account'] %}
+	<tr>
+		<td>{{row['firstname']+" "+row['lastname']}}</td>
+		<td>{{row['housename']}}</td>
+		<td>{{row['customerplace']}}</td>
+		<td>{{row['pincode']}}</td>
+		<td>{{row['customerphone']}}</td>
+		<td>{{row['customeremail']}}</td>
+		<td>{{row['bankname']}}</td>
+		<td>{{row['bankplace']}}</td>
+		<td>{{row['account_number']}}</td>
+		<td>{{row['balance']}}</td>
+		<td>{{row['datetime']}}</td>
+		<td>{{row['status']}}</td>
+	</tr>
+	{% endfor %}
+</table>
+</center>
+                        </div> <!-- /tp-caption -->
+                        <!-- LAYER NR. 2 -->
+                       
+                    </li>
+                    <!-- SLIDE 2 -->
+                    
+                </ul>
+            </div>
+        </div><!--full width banner-->
+
+{% include 'footer.html' %}

@@ -1,0 +1,65 @@
+{% include 'bankheader.html' %}
+<center>
+		<div class="fullwidthbanner" id="home">
+            <div class="tp-banner">
+                <ul>
+                    <!-- SLIDE 1 -->
+                    <li data-transition="fade" data-slotamount="7" data-masterspeed="1500">
+                        <!-- MAIN IMAGE -->
+                        <img src="/static/images/bg-1.jpg" alt="desk" data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+                        <!-- LAYERS -->
+                        <!-- LAYER NR. 1 -->
+                        <div class="tp-caption slider-title" data-x="center" data-y="center"  data-voffset="-30" data-speed="500" data-start="1200" data-easing="Power4.easeInOut">
+<form method="post">
+	<h1 style="padding-top: 150px">Manage Notification</h1>
+	<table class="table" style="width: 600px;font-size:30px">
+		<tr>
+			<th>Notification</th>
+			<td><input type="text" name="notification" required class="form-control"></td>
+		</tr>
+		<tr>
+			<td align="center" colspan="2"><input type="submit" name="manage" value="MANAGE" class="btn btn-primary"></td>
+		</tr>
+	</table>
+</form>
+</center>
+                        </div> <!-- /tp-caption -->
+                        <!-- LAYER NR. 2 -->
+                       
+                    </li>
+                    <!-- SLIDE 2 -->
+                    
+                </ul>
+            </div>
+        </div><!--full width banner-->
+
+
+       <section id="about" class="section-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2 text-center">
+                        <div class="section-title">
+                            <h1> <span class="alo">View Notification</span></h1> 
+                            <span class="border-line"></span>
+                           <center>
+<!-- <h1>View Bank Details</h1> -->
+<table class="table" style="width: 500px;font-size:15px">
+	<tr>
+		<th>Notification</th>
+		<th>Date</th>
+	</tr>
+	{% for row in data['notification'] %}
+	<tr>
+		<td>{{row['notification']}}</td>
+		<td>{{row['date']}}</td>
+	</tr>
+	{% endfor %}
+</table>
+</center>
+
+                        </div>
+                    </div>
+                </div>
+            </div><!--container-->      
+        </section><!--about section end-->
+{% include 'footer.html' %}

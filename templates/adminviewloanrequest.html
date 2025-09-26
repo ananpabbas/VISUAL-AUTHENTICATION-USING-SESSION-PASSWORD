@@ -1,0 +1,108 @@
+{% include 'adminheader.html' %}
+<center>
+		<div class="fullwidthbanner" id="home">
+            <div class="tp-banner">
+                <ul>
+                    <!-- SLIDE 1 -->
+                    <li data-transition="fade" data-slotamount="7" data-masterspeed="1500">
+                        <!-- MAIN IMAGE -->
+                        <img src="/static/images/bg-1.jpg" alt="desk" data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+                        <!-- LAYERS -->
+                        <!-- LAYER NR. 1 -->
+                        <div class="tp-caption slider-title" data-x="center" data-y="center"  data-voffset="-30" data-speed="500" data-start="1200" data-easing="Power4.easeInOut">
+<h1 style="padding-top: 100px">View Loan Requests</h1>
+<!-- Text Search Bar -->
+<input
+  type="text"
+  id="searchInput"
+  class="form-control"
+  placeholder="Search customer requests..."
+  style="width: 600px; margin-bottom: 10px; font-size: 14px; display: inline-block;">
+
+<!-- Status Dropdown Filter -->
+<select id="statusFilter" class="form-control" style="width: 200px; margin-left: 10px; font-size: 14px; display: inline-block;">
+  <option value="all">All Statuses</option>
+  <option value="pending">Pending</option>
+  <option value="approved">Approved</option>
+  <option value="rejected">Rejected</option>
+</select>
+<div style="overflow-x: auto;width: 1200px">
+<table class="table" style="width: 500px;font-size:10px">
+
+	<tr>
+		<th>Customer Name</th>
+		<th>HouseName</th>
+		<th>Customer Place</th>
+		<th>Pincode</th>
+		<th>Phone</th>
+		<th>Email</th>
+		<th>BankName</th>
+		<th>BankPlace</th>
+		<th>Loan Name</th>
+		<th>Details</th>
+		<th>Interest Rate</th>
+		<th>Max Amount</th>
+		<th>Datetime</th>
+		<th>Status</th>
+	</tr>
+	{% for row in data['request'] %}
+	<tr>
+		<td>{{row['firstname']+" "+row['lastname']}}</td>
+		<td>{{row['housename']}}</td>
+		<td>{{row['customerplace']}}</td>
+		<td>{{row['pincode']}}</td>
+		<td>{{row['customerphone']}}</td>
+		<td>{{row['customeremail']}}</td>
+		<td>{{row['bankname']}}</td>
+		<td>{{row['bankplace']}}</td>
+		<td>{{row['loan_name']}}</td>
+		<td>{{row['details']}}</td>
+		<td>{{row['interest_rate']}}</td>
+		<td>{{row['max_amount']}}</td>
+		<td>{{row['datetime']}}</td>
+		<td>{{row['status']}}</td>
+	</tr>
+	{% endfor %}
+</table>
+</div>
+</center>
+                        </div> <!-- /tp-caption -->
+                        <!-- LAYER NR. 2 -->
+                       
+                    </li>
+                    <!-- SLIDE 2 -->
+                    
+                </ul>
+            </div>
+        </div><!--full width banner-->
+{% include 'footer.html' %}
+
+
+<script>
+  const searchInput = document.getElementById('searchInput');
+  const statusFilter = document.getElementById('statusFilter');
+  const rows = document.querySelectorAll('table.table tr');
+
+  function filterTable() {
+    const searchText = searchInput.value.toLowerCase();
+    const selectedStatus = statusFilter.value;
+
+    for (let i = 1; i < rows.length; i++) { // Skip header row
+      const row = rows[i];
+      const rowText = row.innerText.toLowerCase();
+      const statusCell = row.cells[row.cells.length - 1].innerText.toLowerCase();
+
+      // Check text search match
+      const matchesSearch = rowText.includes(searchText);
+
+      // Check status filter
+      const matchesStatus = selectedStatus === 'all' || statusCell === selectedStatus;
+
+      // Show row only if both conditions are true
+      row.style.display = (matchesSearch && matchesStatus) ? '' : 'none';
+    }
+  }
+
+  searchInput.addEventListener('keyup', filterTable);
+  statusFilter.addEventListener('change', filterTable);
+</script>

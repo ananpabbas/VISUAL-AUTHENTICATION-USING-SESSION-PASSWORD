@@ -1,0 +1,127 @@
+{% include 'bankheader.html' %}
+<center>
+		<div class="fullwidthbanner" id="home">
+            <div class="tp-banner">
+                <ul>
+                    <!-- SLIDE 1 -->
+                    <li data-transition="fade" data-slotamount="7" data-masterspeed="1500">
+                        <!-- MAIN IMAGE -->
+                        <img src="/static/images/bg-1.jpg" alt="desk" data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+                        <!-- LAYERS -->
+                        <!-- LAYER NR. 1 -->
+                        <div class="tp-caption slider-title" data-x="center" data-y="center"  data-voffset="-30" data-speed="500" data-start="1200" data-easing="Power4.easeInOut">
+<h1 style="padding-top: 100px">View Loan Requests</h1>
+<div style="overflow-x: auto;width: 1200px">
+	<input
+  type="text"
+  id="generalSearch"
+  class="form-control"
+  placeholder="Search anything..."
+  style="width: 230px; display: inline-block; margin-bottom: 10px; font-size: 13px;">
+
+<input
+  type="text"
+  id="loanSearch"
+  class="form-control"
+  placeholder="Search by Loan Name"
+  style="width: 200px; display: inline-block; margin-left: 10px; margin-bottom: 10px; font-size: 13px;">
+
+<input
+  type="text"
+  id="accountSearch"
+  class="form-control"
+  placeholder="Search by Account Number"
+  style="width: 200px; display: inline-block; margin-left: 10px; margin-bottom: 10px; font-size: 13px;">
+
+<select
+  id="statusFilter"
+  class="form-control"
+  style="width: 180px; display: inline-block; margin-left: 10px; margin-bottom: 10px; font-size: 13px;">
+  <option value="all">All Statuses</option>
+  <option value="approved">Approved</option>
+  <option value="rejected">Rejected</option>
+  <option value="pending">Pending</option>
+</select>
+
+<table class="table" style="width: 500px;font-size:10px">
+	<tr>
+		<th>Customer Name</th>
+		<th>HouseName</th>
+		<th>Customer Place</th>
+		<th>Pincode</th>
+		<th>Phone</th>
+		<th>Email</th>
+		<th>Loan Name</th>
+		<th>Details</th>
+		<th>Interest Rate</th>
+		<th>Max Amount</th>
+		<th>Datetime</th>
+		<th>Status</th>
+	</tr>
+	{% for row in data['request'] %}
+	<tr>
+		<td>{{row['firstname']+" "+row['lastname']}}</td>
+		<td>{{row['housename']}}</td>
+		<td>{{row['place']}}</td>
+		<td>{{row['pincode']}}</td>
+		<td>{{row['phone']}}</td>
+		<td>{{row['email']}}</td>
+		<td>{{row['loan_name']}}</td>
+		<td>{{row['details']}}</td>
+		<td>{{row['interest_rate']}}</td>
+		<td>{{row['max_amount']}}</td>
+		<td>{{row['datetime']}}</td>
+		<td>{{row['status']}}</td>
+	</tr>
+	{% endfor %}
+</table>
+</div>
+</center>
+                        </div> <!-- /tp-caption -->
+                        <!-- LAYER NR. 2 -->
+                       
+                    </li>
+                    <!-- SLIDE 2 -->
+                    
+                </ul>
+            </div>
+        </div><!--full width banner-->
+
+{% include 'footer.html' %}
+
+<script>
+  const generalSearch = document.getElementById('generalSearch');
+  const loanSearch = document.getElementById('loanSearch');
+  const accountSearch = document.getElementById('accountSearch');
+  const statusFilter = document.getElementById('statusFilter');
+  const rows = document.querySelectorAll('table.table tr');
+
+  function filterTable() {
+    const generalText = generalSearch.value.toLowerCase();
+    const loanText = loanSearch.value.toLowerCase();
+    const accountText = accountSearch.value.toLowerCase();
+    const statusText = statusFilter.value.toLowerCase();
+
+    for (let i = 1; i < rows.length; i++) { // skip table header
+      const row = rows[i];
+      const cells = row.getElementsByTagName('td');
+
+      const rowText = row.innerText.toLowerCase();
+      const loanName = cells[6]?.innerText.toLowerCase();     // 7th column
+      const accountNumber = cells[10]?.innerText.toLowerCase(); // 11th column (if added)
+      const status = cells[11]?.innerText.toLowerCase();      // 12th column
+
+      const matchGeneral = rowText.includes(generalText);
+      const matchLoan = loanName.includes(loanText);
+      const matchAccount = accountNumber.includes(accountText);
+      const matchStatus = statusText === 'all' || status === statusText;
+
+      row.style.display = (matchGeneral && matchLoan && matchAccount && matchStatus) ? '' : 'none';
+    }
+  }
+
+  generalSearch.addEventListener('keyup', filterTable);
+  loanSearch.addEventListener('keyup', filterTable);
+  accountSearch.addEventListener('keyup', filterTable);
+  statusFilter.addEventListener('change', filterTable);
+</script>

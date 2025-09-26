@@ -1,0 +1,64 @@
+{% include 'employeeheader.html' %}
+
+<div style=" background:url('/static/images/lap3.jpg') ; height: 300px; width: 100%; background-size: contain;" >
+		</div>
+<center>
+		
+<form>
+	<h1 style="padding-top: 50px">View Customers</h1>
+	<input
+  type="text"
+  id="customerSearch"
+  class="form-control"
+  placeholder="Search customers..."
+  style="width: 300px; margin-bottom: 15px; font-size: 14px;">
+
+	<!-- <div style="overflow-x: auto;width: 1200px"> -->
+	<table class="table" style="width: 100px;font-size:15px">
+	<tr>
+		<!-- <th>Security Key</th> -->
+		<th>FirstName</th>
+		<th>LastName</th>
+		<th>HouseName</th>
+		<th>Place</th>
+		<th>Pincode</th>
+		<th>phone</th>
+		<th>Email</th>
+	</tr>
+	{% for row in data['cust'] %}
+	<tr>
+		<!-- <td>{{row['security_key']}}</td>  -->
+		<td>{{row['firstname']}}</td>
+		<td>{{row['lastname']}}</td>
+		<td>{{row['housename']}}</td>
+		<td>{{row['place']}}</td>
+		<td>{{row['pincode']}}</td>
+		<td>{{row['phone']}}</td>
+		<td>{{row['email']}}</td>
+		<td><a href="employeemanageaccounts?id={{row['customer_id']}}">manage accounts</a></td>
+		<td><a href="employeechat?cid={{row['login_id']}}&fname={{row['firstname']}}&lname={{row['lastname']}}" class="btn btn-primary">chat</a></td>
+	</tr>
+	{% endfor %}
+</table>
+
+<!-- </div> -->
+</form>
+</center>
+             <script>
+  const searchInput = document.getElementById('customerSearch');
+  const rows = document.querySelectorAll('table.table tr');
+
+  searchInput.addEventListener('keyup', function () {
+    const searchValue = this.value.toLowerCase();
+
+    for (let i = 1; i < rows.length; i++) { // skip header row
+      const row = rows[i];
+      const rowText = row.innerText.toLowerCase();
+      row.style.display = rowText.includes(searchValue) ? '' : 'none';
+    }
+  });
+</script>
+
+
+{% include 'footer.html' %}
+

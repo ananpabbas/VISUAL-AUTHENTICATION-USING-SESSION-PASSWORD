@@ -1,0 +1,46 @@
+{% include 'employeeheader.html' %}
+<center>
+		<div class="fullwidthbanner" id="home">
+            <div class="tp-banner">
+                <ul> 
+                    <!-- SLIDE 1 --> 
+                    <li data-transition="fade" data-slotamount="7" data-masterspeed="1500">
+                        <!-- MAIN IMAGE -->
+                        <img src="/static/images/bg-1.jpg" alt="desk" data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+                        <!-- LAYERS -->
+                        <!-- LAYER NR. 1 -->
+                        <div class="tp-caption slider-title" data-x="center" data-y="center"  data-voffset="-30" data-speed="500" data-start="1200" data-easing="Power4.easeInOut">
+<form method="post">
+	<h1 style="padding-top: 150px">{{ data['fname'] }} {{ data['lname'] }}</h1>
+	<table class="table" style="width: 600px;font-size:15px">
+	{% for row in data['chatbank'] %}
+	<tr>
+        {% if row['sender_id']==data['lid'] %}
+            <td><input type="text" name="" readonly value="" class="form-control"></td>
+		  <td><input type="text" name="" readonly value="{{row['message']}}" class="form-control"></td>
+        {% else %}
+            
+          <td><input type="text" name="" readonly value="{{row['message']}}" class="form-control"></td>
+          <td><input type="text" name="" readonly value="" class="form-control"></td>
+        {% endif %}
+    
+	</tr>
+	{% endfor %}
+
+    <tr>
+        <td colspan="2"><input type="text" name="message" class="form-control"><input type="submit" name="submit" value ="Send" class="btn btn-success"></td>
+    </tr>
+</table>
+
+</form>
+</center>
+                        </div> <!-- /tp-caption -->
+                        <!-- LAYER NR. 2 -->
+                       
+                    </li>
+                    <!-- SLIDE 2 -->
+                    
+                </ul>
+            </div>
+        </div><!--full width banner-->
+{% include 'footer.html' %}

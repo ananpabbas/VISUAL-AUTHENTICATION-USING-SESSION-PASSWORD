@@ -1,0 +1,192 @@
+{% include 'publicheader.html' %}
+ <!-- Get In Touch start -->
+        <section class="pt-140 pb-140 get-touch-area bg_white">
+            <div class="container">
+                <div class="row gy-4 gy-lg-0">
+                    <div class="col-lg-5">
+                        <div class="section-title text-start">
+                            <h2>Get in touch with us.</h2>
+                            <p>Want to get in touch? We'd love to hear from you. Here's how you can reach us...</p>
+                        </div>
+                        <div class="row mt-55">
+                            <div class="col-sm-6">
+                                <div class="get-touch-box">
+                                    <div class="icon">
+
+                                        <img src="/static/static1/images/call-outline.png" alt="call icon">
+                                    </div>
+                                    <div>
+                                        <p>Call the helpline:</p>
+                                        <span>(02) 4003 7936</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="get-touch-box">
+                                    <div class="icon">
+
+                                        <img src="/static/static1/images/mail-open-outline.png" alt="mail icon">
+                                    </div>
+                                    <div>
+                                        <p>Email us:</p>
+                                        <span>hello@banca.com</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="get-touch-box mt-30">
+                                    <div class="icon">
+
+                                        <i class="icon_pin_alt "></i>
+                                    </div>
+                                    <div>
+                                        <p>Location</p>
+                                        <span>1550 Bryant Street STE 750, San Francisco, CA 94103</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="get-touch-box mt-30">
+                                    <div class="icon">
+
+                                        <i class="icon_clock_alt "></i>
+                                    </div>
+                                    <div>
+                                        <p>Work Hours</p>
+                                        <span>Monday - Saturday: 9am - 7pm
+                                            Sunday: 12am — 6pm</span>
+                                    </div>
+									
+                                </div>
+                            </div>
+							
+                        </div>
+						
+                    </div>
+                    <div class="col-lg-6 offset-lg-1">
+						<div class="section-title text-start">
+                            <h2>Start Your Baking With Us.</h2>
+                        </div>
+                        <div class="contact-form-widget">
+                            <form  method="POST">
+								 
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="f-name">First Name</label>
+                                        <input
+  type="text"
+  id="f-name"
+  name="firstname"
+  class="form-control"
+  placeholder="What's your first name?"
+  pattern="[A-Za-z ]+"
+  title="First name must contain letters and spaces only"
+  required>
+
+                                    </div>
+									<div class="col-md-6">
+                                        <label for="f-name">Last Name</label>
+                                       <input
+  type="text"
+  id="f-name"
+  name="lastname"
+  class="form-control"
+  placeholder="What's your last name?"
+  pattern="[A-Za-z ]+"
+  title="Last name must contain letters and spaces only"
+  required>
+</div>
+									<div class="col-md-6">
+                                        <label for="f-name">House Name</label>
+                                       <input
+  type="text"
+  id="f-name"
+  name="housename"
+  class="form-control"
+  placeholder="What's your house name?"
+  pattern="[A-Za-z0-9\s.,#/\-&()]+"
+  title="House name can contain letters, numbers, spaces, and common symbols like , . # - /"
+  required>
+ </div>
+									<div class="col-md-6">
+                                        <label for="f-name">Place Name</label>
+                                       <input
+  type="text"
+  id="f-name"
+  name="place"
+  class="form-control"
+  placeholder="What's your place name?"
+  pattern="[A-Za-z ]+"
+  title="Place name must contain letters and spaces only"
+  required>
+ </div>
+									<div class="col-md-6">
+                                        <label for="f-name">Zip Code</label>
+                                        <input
+  type="text"
+  id="f-name"
+  name="pincode"
+  class="form-control"
+  placeholder="What's your pincode?"
+  pattern="\d{6}"
+  maxlength="6"
+  inputmode="numeric"
+  title="Pincode must be exactly 6 digits"
+  required>
+</div>
+                                    <div class="col-md-6">
+                                        <label for="f-name">Phone</label>
+                                       <input
+  type="text"
+  id="f-name"
+  name="phone"
+  class="form-control"
+  placeholder="What's your phone number?"
+  pattern="\d{10}"
+  maxlength="10"
+  inputmode="numeric"
+  title="Phone number must be exactly 10 digits"
+  required>
+  </div>
+                                   <div class="col-md-12 mt-20">
+                                        <label for="email-address">Email Id</label>
+                                        <input
+  type="email"
+  id="email-address"
+  name="email"
+  class="form-control"
+  placeholder="yourname@example.com"
+  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+  title="Enter a valid email address like yourname@example.com"
+  required>
+  </div>
+                                    
+                                    <div class="col-md-6">
+                                        <label for="f-name">User Name</label>
+                                        <input type="text" id="f-name" name="username" class="form-control" placeholder="Add Your User name" required="">
+                                    </div>
+									<div class="col-md-6">
+                                        <label for="f-name">PassWord</label>
+                                        <input
+  type="password"
+  id="f-name"
+  name="password"
+  class="form-control"
+  placeholder="Add Your Password"
+  pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{7,}"
+  title="Password must be at least 7 characters and include uppercase, lowercase, and a number"
+  required>
+  </div>
+                                    
+                                    <div class="col-12 mt-35">
+										<input type="submit" class="theme-btn theme-btn-lg w-100" name="register" value="Sign Up">
+                                        </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Get In Touch end -->
+{% include 'footer1.html' %}
